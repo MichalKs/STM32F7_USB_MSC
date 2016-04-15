@@ -32,11 +32,11 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f7xx_hal.h"
 #include "usbd_core.h"
-#include "usbd_desc.h"
 #include "usbd_msc.h"
-#include "usbd_storage.h"
 #include "stm32746g_discovery.h"
 #include "stm32746g_discovery_sd.h"
+#include "usbd_desc.h"
+#include "usbd_storage.h"
 
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
