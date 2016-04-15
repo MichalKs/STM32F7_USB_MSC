@@ -2,8 +2,8 @@
   ******************************************************************************
   * @file    USB_Device/MSC_Standalone/Src/main.c
   * @author  MCD Application Team
-  * @version V1.0.0
-  * @date    25-June-2015
+  * @version V1.0.2
+  * @date    18-November-2015 
   * @brief   USB device Mass storage demo main file
   ******************************************************************************
   * @attention
