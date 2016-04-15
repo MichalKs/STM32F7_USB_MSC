@@ -101,23 +101,6 @@ void HAL_Delay(__IO uint32_t Delay)
 }
 
 /**
-  * @brief  Toggle LED1 to show user input state.
-  * @param  None
-  * @retval None
-  */
-void Toggle_Leds(void)
-{
-  static uint32_t ticks;
-
-  if(ticks++ == 100)
-  {
-    BSP_LED_Toggle(LED1);
-    ticks = 0;
-  }
-}
-
-
-/**
   * @brief  This function is executed in case of error occurrence.
   */
 void Error_Handler(void) {

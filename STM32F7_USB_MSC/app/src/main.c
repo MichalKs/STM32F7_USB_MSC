@@ -1,14 +1,16 @@
 
 #include <string.h>
-#include <stm32f7xx_hal.h>
 #include <stm32746g_discovery_lcd.h>
 #include <stm32746g_discovery_ts.h>
 #include <stm32746g_discovery_sd.h>
+#include <usbd_core.h>
+#include <usbd_msc.h>
+#include "usbd_desc.h"
+#include "usbd_storage.h"
 #include "led.h"
 #include "timers.h"
 #include "system.h"
 #include "comm.h"
-#include "main.h"
 
 #define DEBUG
 
@@ -77,29 +79,28 @@ int main(void) {
 
   //*******************LCD test END
 
-  BSP_SD_Init();
+//  BSP_SD_Init();
+//
+//  HAL_SD_CardInfoTypedef cardInfo;
+//
+//  if (BSP_SD_IsDetected()) {
+//
+//    BSP_SD_GetCardInfo(&cardInfo);
+//
+//    println("SD card has %d blocks", cardInfo.CardBlockSize);
+//
+//  }
 
-  HAL_SD_CardInfoTypedef cardInfo;
-
-  if (BSP_SD_IsDetected()) {
-
-    BSP_SD_GetCardInfo(&cardInfo);
-
-    println("SD card has %d blocks", cardInfo.CardBlockSize);
-
-
-  }
-
-  /* Init Device Library */
+  // Init Device Library
   USBD_Init(&USBD_Device, &MSC_Desc, 0);
 
-  /* Add Supported Class */
+  // Add Supported Class
   USBD_RegisterClass(&USBD_Device, USBD_MSC_CLASS);
 
-  /* Add Storage callbacks for MSC Class */
+  // Add Storage callbacks for MSC Class
   USBD_MSC_RegisterStorage(&USBD_Device, &USBD_DISK_fops);
 
-  /* Start Device Process */
+  // Start Device Process
   USBD_Start(&USBD_Device);
 
   uint8_t buf[255]; // buffer for receiving commands from PC
